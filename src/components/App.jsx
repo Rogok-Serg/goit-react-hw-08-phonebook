@@ -1,22 +1,31 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactList/ContactList';
-import { useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { lazy } from 'react';
+import { Suspense } from 'react';
 import { Loader } from './Loader/Loader';
+import { NavLink, Route, Routes } from 'react-router-dom';
+
+const ContactsPage = lazy(() => import('page/ContactsPage/ContactsPage'));
+const LoginPage = lazy(() => import('page/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('page/RegisterPage/RegisterPage'));
 
 export const App = () => {
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
   return (
-    <>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-      {isLoading && !error && <Loader />}
-    </>
+    <body>
+      <header>
+        <nav>
+          <NavLink to="/register">Register</NavLink>
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/contacts">Contacts</NavLink>
+        </nav>
+      </header>
+      <main>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+          </Routes>
+        </Suspense>
+      </main>
+    </body>
   );
 };
