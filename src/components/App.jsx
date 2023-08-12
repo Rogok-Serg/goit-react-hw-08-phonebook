@@ -9,7 +9,7 @@ const RegisterPage = lazy(() => import('page/RegisterPage/RegisterPage'));
 
 export const App = () => {
   return (
-    <body>
+    <>
       <header>
         <nav>
           <NavLink to="/register">Register</NavLink>
@@ -26,6 +26,6 @@ export const App = () => {
           </Routes>
         </Suspense>
       </main>
-    </body>
+    </>
   );
 };
