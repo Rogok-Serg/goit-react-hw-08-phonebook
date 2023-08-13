@@ -3,7 +3,7 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Loader } from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 
 const ContactsPage = () => {
   const isLoading = useSelector(selectIsLoading);

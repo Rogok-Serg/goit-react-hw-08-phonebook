@@ -4,8 +4,11 @@ const LoginPage = () => {
     const form = e.currentTarget;
     const email = form.userEmail.value;
     const password = form.userPassword.value;
-    console.log('email: ', email);
-    console.log('password: ', password);
+    const allUserDataLogin = {
+      email,
+      password,
+    };
+    console.log('allUserDataLogin: ', allUserDataLogin);
     form.reset();
   };
 
@@ -19,7 +22,7 @@ const LoginPage = () => {
         </label>
         <label>
           <p>Password:</p>
-          <input name="userPassword" type="password" required minLength={5} />
+          <input name="userPassword" type="password" required minLength={7} />
         </label>
         <br />
         <button type="submit">Sing in</button>

@@ -1,7 +1,8 @@
 // import { devToolsEnhancer } from '@redux-devtools/extension';
 // import { combineReducers, createStore } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { contactsStorageReducer } from './contactsStorageReducer';
+import { contactsStorageReducer } from './contacts/contactsStorageReducer';
+import { authReducer } from './authentificated/authReducer';
 
 // import {
 //   persistStore,
@@ -27,6 +28,7 @@ export const store = configureStore({
       // persistReducer(
       // contactsStoragepostDetailsPersistConfig,
       contactsStorageReducer,
+    auth: authReducer,
     // ),
   },
   // middleware: getDefaultMiddleware =>
