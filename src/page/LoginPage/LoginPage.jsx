@@ -1,14 +1,14 @@
+import { useDispatch } from 'react-redux';
+import { loginUser } from 'redux/authentificated/authOperations';
+
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const handleSabmitLogin = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const email = form.userEmail.value;
     const password = form.userPassword.value;
-    const allUserDataLogin = {
-      email,
-      password,
-    };
-    console.log('allUserDataLogin: ', allUserDataLogin);
+    dispatch(loginUser({ email, password }));
     form.reset();
   };
 

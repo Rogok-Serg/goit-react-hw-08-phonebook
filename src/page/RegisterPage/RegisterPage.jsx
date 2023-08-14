@@ -38,7 +38,7 @@ const RegisterPage = () => {
           <input name="userPassword" type="password" required minLength={7} />
         </label>
         <br />
-        <button type="submit">Sing in</button>
+        <button type="submit">Sing Up</button>
       </form>
     </div>
   );

@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  addContact,
+  deleteContact,
+  fetchContacts,
+} from 'redux/authentificated/authOperations';
 // import bookContacts from '../data/bookContacts';
-import { fetchContacts, addContact, deleteContact } from './operations';
 
 const initialState = {
   contacts: {
@@ -23,6 +27,8 @@ const contactsStorageSlice = createSlice({
   },
   extraReducers: builder =>
     builder
+
+      //----------------GET ALL CONTACTS----------------
       .addCase(fetchContacts.pending, state => {
         state.contacts.isLoading = true;
         state.contacts.error = null;
@@ -35,6 +41,8 @@ const contactsStorageSlice = createSlice({
         state.contacts.isLoading = false;
         state.contacts.error = action.payload;
       })
+
+      //----------------ADD NEW CONTACT----------------
       .addCase(addContact.pending, state => {
         state.contacts.isLoading = true;
         state.contacts.error = null;
@@ -47,6 +55,7 @@ const contactsStorageSlice = createSlice({
         state.contacts.isLoading = false;
         state.contacts.error = action.payload;
       })
+      //----------------DELETE CONTACT----------------
       .addCase(deleteContact.pending, state => {
         state.contacts.isLoading = true;
         state.contacts.error = null;
