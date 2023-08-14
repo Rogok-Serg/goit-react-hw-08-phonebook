@@ -1,7 +1,11 @@
-import { useDispatch } from 'react-redux';
-import { registerUser } from 'redux/authentificated/authOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import { registerUser } from 'redux/authentificated/operations';
+import { selectAuthentificated } from 'redux/authentificated/authSelectors';
 
 const RegisterPage = () => {
+  const authentificated = useSelector(selectAuthentificated);
+
   const dispatch = useDispatch();
 
   const handleSubmitRegister = e => {
@@ -20,6 +24,7 @@ const RegisterPage = () => {
     );
     form.reset();
   };
+  if (authentificated) return <Navigate to="/contacts" />;
 
   return (
     <div>

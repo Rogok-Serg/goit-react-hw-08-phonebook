@@ -3,7 +3,7 @@ import {
   addContact,
   deleteContact,
   fetchContacts,
-} from 'redux/authentificated/authOperations';
+} from 'redux/authentificated/operations';
 // import bookContacts from '../data/bookContacts';
 
 const initialState = {

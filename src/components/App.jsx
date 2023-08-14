@@ -7,7 +7,7 @@ import {
   selectAuthentificated,
   selectToken,
 } from 'redux/authentificated/authSelectors';
-import { logoutUser, refreshUser } from 'redux/authentificated/authOperations';
+import { logoutUser, refreshUser } from 'redux/authentificated/operations';
 import { useEffect } from 'react';
 
 const HomePage = lazy(() => import('page/HomePage/HomePage'));
@@ -23,7 +23,7 @@ export const App = () => {
   useEffect(() => {
     if (!token || authentificated) return;
     dispatch(refreshUser());
-  }, [dispatch, token, authentificated]);
+  }, [token, dispatch, authentificated]);
 
   const handleLogout = () => {
     dispatch(logoutUser());

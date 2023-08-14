@@ -4,17 +4,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import { contactsStorageReducer } from './contacts/contactsStorageReducer';
 import { authReducer } from './authentificated/authReducer';
 
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import {
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 
 // const contactsStoragepostDetailsPersistConfig = {
 //   key: 'contactsStorage',
@@ -31,12 +29,12 @@ export const store = configureStore({
     auth: authReducer,
     // ),
   },
-  // middleware: getDefaultMiddleware =>
-  //   getDefaultMiddleware({
-  //     serializableCheck: {
-  //       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-  //     },
-  //   }),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

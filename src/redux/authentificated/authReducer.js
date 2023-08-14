@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  loginUser,
-  logoutUser,
-  refreshUser,
-  registerUser,
-} from './authOperations';
+import { loginUser, logoutUser, refreshUser, registerUser } from './operations';
 
 const initialState = {
   userData: null,
@@ -23,11 +18,11 @@ const authSlice = createSlice({
       .addCase(registerUser.pending, state => {
         state.isLoading = true;
         state.error = null;
-        state.authentificated = false;
+        // state.authentificated = false;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
+        // state.error = null;
         state.authentificated = true;
         state.userData = action.payload.user;
         state.token = action.payload.token;
@@ -40,11 +35,11 @@ const authSlice = createSlice({
       .addCase(loginUser.pending, state => {
         state.isLoading = true;
         state.error = null;
-        state.authentificated = false;
+        // state.authentificated = false;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
+        // state.error = null;
         state.authentificated = true;
         state.userData = action.payload.user;
         state.token = action.payload.token;
@@ -60,7 +55,7 @@ const authSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, state => {
         state.isLoading = false;
-        state.error = null;
+        // state.error = null;
         state.authentificated = false;
         state.userData = null;
         state.token = null;
@@ -76,9 +71,9 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
-        state.userData = action.payload;
         state.authentificated = true;
+        // state.error = null;
+        state.userData = action.payload;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isLoading = false;

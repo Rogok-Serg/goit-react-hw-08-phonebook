@@ -1,7 +1,11 @@
-import { useDispatch } from 'react-redux';
-import { loginUser } from 'redux/authentificated/authOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import { loginUser } from 'redux/authentificated/operations';
+import { selectAuthentificated } from 'redux/authentificated/authSelectors';
 
 const LoginPage = () => {
+  const authentificated = useSelector(selectAuthentificated);
+
   const dispatch = useDispatch();
   const handleSabmitLogin = e => {
     e.preventDefault();
@@ -11,6 +15,8 @@ const LoginPage = () => {
     dispatch(loginUser({ email, password }));
     form.reset();
   };
+
+  if (authentificated) return <Navigate to="/contacts" />;
 
   return (
     <div>
