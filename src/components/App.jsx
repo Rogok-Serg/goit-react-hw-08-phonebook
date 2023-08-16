@@ -7,8 +7,10 @@ import {
   selectAuthentificated,
   selectToken,
 } from 'redux/authentificated/authSelectors';
-import { logoutUser, refreshUser } from 'redux/authentificated/operations';
+import { refreshUser } from 'redux/authentificated/operations';
 import { useEffect } from 'react';
+import UserMenu from './UserMenu/UserMenu';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const HomePage = lazy(() => import('page/HomePage/HomePage'));
 const ContactsPage = lazy(() => import('page/ContactsPage/ContactsPage'));
@@ -25,9 +27,9 @@ export const App = () => {
     dispatch(refreshUser());
   }, [token, dispatch, authentificated]);
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
+  // const handleLogout = () => {
+  //   dispatch(logoutUser());
+  // };
 
   return (
     <>
@@ -37,7 +39,7 @@ export const App = () => {
           {authentificated ? (
             <>
               <NavLink to="/contacts">Contacts</NavLink>
-              <button onClick={handleLogout}>Logout</button>
+              <UserMenu />
             </>
           ) : (
             <>
@@ -53,7 +55,14 @@ export const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/contacts" element={<ContactsPage />} />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </Suspense>
       </main>
