@@ -11,6 +11,7 @@ import { refreshUser } from 'redux/authentificated/operations';
 import { useEffect } from 'react';
 import UserMenu from './UserMenu/UserMenu';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import { StyledCont, StyledHeader, StyledMain, StyledNav } from './App.styled';
 
 const HomePage = lazy(() => import('page/HomePage/HomePage'));
 const ContactsPage = lazy(() => import('page/ContactsPage/ContactsPage'));
@@ -27,29 +28,25 @@ export const App = () => {
     dispatch(refreshUser());
   }, [token, dispatch, authentificated]);
 
-  // const handleLogout = () => {
-  //   dispatch(logoutUser());
-  // };
-
   return (
     <>
-      <header>
-        <nav>
+      <StyledHeader>
+        <StyledNav>
           <NavLink to="/">Home</NavLink>
           {authentificated ? (
-            <>
+            <StyledCont>
               <NavLink to="/contacts">Contacts</NavLink>
               <UserMenu />
-            </>
+            </StyledCont>
           ) : (
-            <>
+            <div>
               <NavLink to="/register">Register</NavLink>
               <NavLink to="/login">Login</NavLink>
-            </>
+            </div>
           )}
-        </nav>
-      </header>
-      <main>
+        </StyledNav>
+      </StyledHeader>
+      <StyledMain>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -65,7 +62,7 @@ export const App = () => {
             />
           </Routes>
         </Suspense>
-      </main>
+      </StyledMain>
     </>
   );
 };
