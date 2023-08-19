@@ -4,5 +4,4 @@ export const StyledUserMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-top: -15px;
 `;
