@@ -26,7 +26,6 @@ const RegisterPage = () => {
   //   form.reset();
   // };
   const onFinish = values => {
-    console.log('values: ', values);
     dispatch(registerUser(values));
   };
   if (authentificated) return <Navigate to="/contacts" />;
