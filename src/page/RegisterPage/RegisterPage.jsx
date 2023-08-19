@@ -26,8 +26,8 @@ const RegisterPage = () => {
   //   form.reset();
   // };
   const onFinish = values => {
-    dispatch(registerUser(values));
     console.log('values: ', values);
+    dispatch(registerUser(values));
   };
   if (authentificated) return <Navigate to="/contacts" />;
 
@@ -49,16 +49,16 @@ const RegisterPage = () => {
           remember: true,
         }}
         autoComplete="off"
-        onSubmit={onFinish}
+        onFinish={onFinish}
       >
         <Form.Item
           label="Name"
-          name="userName"
-          minLength={5}
+          name="name"
+          // minLength={5}
           rules={[
             {
               required: true,
-              message: 'Please input your username!',
+              message: 'Please input your name!',
             },
           ]}
         >
@@ -67,7 +67,7 @@ const RegisterPage = () => {
         {/* <input name="userName" type="text" required minLength={5} /> */}
         <Form.Item
           label="Email"
-          name="userEmail"
+          name="email"
           rules={[
             {
               required: true,
@@ -79,7 +79,7 @@ const RegisterPage = () => {
         </Form.Item>
         <Form.Item
           label="Password"
-          name="userPassword"
+          name="password"
           minLength={7}
           rules={[
             {
