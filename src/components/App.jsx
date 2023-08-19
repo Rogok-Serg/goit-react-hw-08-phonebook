@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { Suspense } from 'react';
 import { Loader } from './Loader/Loader';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAuthentificated,
@@ -11,7 +11,13 @@ import { refreshUser } from 'redux/authentificated/operations';
 import { useEffect } from 'react';
 import UserMenu from './UserMenu/UserMenu';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import { StyledCont, StyledHeader, StyledMain, StyledNav } from './App.styled';
+import {
+  StyledCont,
+  StyledHeader,
+  StyledMain,
+  StyledNav,
+  StyledNavLink,
+} from './App.styled';
 
 const HomePage = lazy(() => import('page/HomePage/HomePage'));
 const ContactsPage = lazy(() => import('page/ContactsPage/ContactsPage'));
@@ -32,16 +38,16 @@ export const App = () => {
     <>
       <StyledHeader>
         <StyledNav>
-          <NavLink to="/">Home</NavLink>
+          <StyledNavLink to="/">Home</StyledNavLink>
           {authentificated ? (
             <StyledCont>
-              <NavLink to="/contacts">Contacts</NavLink>
+              <StyledNavLink to="/contacts">Contacts</StyledNavLink>
               <UserMenu />
             </StyledCont>
           ) : (
             <div>
-              <NavLink to="/register">Register</NavLink>
-              <NavLink to="/login">Login</NavLink>
+              <StyledNavLink to="/register">Register</StyledNavLink>
+              <StyledNavLink to="/login">Login</StyledNavLink>
             </div>
           )}
         </StyledNav>

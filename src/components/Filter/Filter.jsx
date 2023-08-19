@@ -16,6 +16,7 @@ export const Filter = () => {
   return (
     <label className={css.filter}>
       <input
+        placeholder="Contact search"
         className={css.input}
         type="text"
         value={filter}

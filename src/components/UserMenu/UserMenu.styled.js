@@ -3,6 +3,6 @@ import styled from 'styled-components';
 export const StyledUserMenu = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-end;
+  padding-top: -15px;
 `;

@@ -57,6 +57,7 @@ export const ContactForm = () => {
       <span>Name</span>
       <label className={css.label}>
         <input
+          placeholder="Please enter a name"
           onChange={handelInputChange}
           type="text"
           name="name"
@@ -69,6 +70,7 @@ export const ContactForm = () => {
       <span>Phone</span>
       <label>
         <input
+          placeholder="Please enter a number"
           onChange={handelInputChange}
           type="text"
           name="number"
