@@ -4,12 +4,13 @@ import { logoutUser } from 'redux/authentificated/operations';
 import { StyledUserMenu } from './UserMenu.styled';
 
 const UserMenu = () => {
-  const { email } = useSelector(selectUserData);
+  const isEmail = useSelector(selectUserData);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logoutUser());
   };
   return (
+    const {email} = isEmail
     <StyledUserMenu>
       <p>{email}</p>
       <button onClick={handleLogout}>Logout</button>{' '}
