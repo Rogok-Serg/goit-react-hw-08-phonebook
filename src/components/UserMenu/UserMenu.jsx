@@ -10,9 +10,8 @@ const UserMenu = () => {
     dispatch(logoutUser());
   };
   return (
-    const {email} = isEmail
     <StyledUserMenu>
-      <p>{email}</p>
+      <p>{isEmail.email}</p>
       <button onClick={handleLogout}>Logout</button>{' '}
     </StyledUserMenu>
   );
